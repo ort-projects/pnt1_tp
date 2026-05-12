@@ -13,6 +13,8 @@ builder.Services.AddDbContext<WebDbContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); 
 });
 
+builder.WebHost.UseStaticWebAssets();
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
