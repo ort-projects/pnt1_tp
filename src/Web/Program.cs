@@ -9,6 +9,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Configuration.AddEnvironmentVariables();
 
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(Program).Assembly));
+
 builder.Services.AddDbContext<WebDbContext>(options =>
 {
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); 
