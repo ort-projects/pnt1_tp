@@ -1,13 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Web.Application.Services;
 using Web.Models;
 
 namespace Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ProductosService productosService) : Controller
 {
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var productos = await productosService.GetProductosDestacados();
+        ViewBag.Productos = productos;
         return View();
     }
 

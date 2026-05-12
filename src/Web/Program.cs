@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Web.Application.Services;
 using Web.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<WebDbContext>(options =>
 {
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); 
 });
+
+builder.Services.AddScoped<ProductosService>();
 
 builder.WebHost.UseStaticWebAssets();
 

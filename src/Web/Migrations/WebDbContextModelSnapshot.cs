@@ -47,7 +47,7 @@ namespace Web.Migrations
                     b.HasIndex("IdSesion")
                         .IsUnique();
 
-                    b.ToTable("Carritos");
+                    b.ToTable("Carritos", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.CarritoProducto", b =>
@@ -79,7 +79,7 @@ namespace Web.Migrations
 
                     b.HasIndex("IdProducto");
 
-                    b.ToTable("CarritoProducto");
+                    b.ToTable("CarritosProductos", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.Categoria", b =>
@@ -106,7 +106,7 @@ namespace Web.Migrations
                     b.HasIndex("Nombre")
                         .IsUnique();
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categorias", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.Pedido", b =>
@@ -140,7 +140,7 @@ namespace Web.Migrations
                     b.HasIndex("IdCarrito")
                         .IsUnique();
 
-                    b.ToTable("Pedido");
+                    b.ToTable("Pedidos", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.PedidoProducto", b =>
@@ -180,7 +180,7 @@ namespace Web.Migrations
 
                     b.HasIndex("IdProducto");
 
-                    b.ToTable("PedidoProducto");
+                    b.ToTable("PedidosProductos", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.Producto", b =>
@@ -229,7 +229,7 @@ namespace Web.Migrations
 
                     b.HasIndex("CategoriaId");
 
-                    b.ToTable("Producto");
+                    b.ToTable("Productos", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domain.CarritoProducto", b =>
