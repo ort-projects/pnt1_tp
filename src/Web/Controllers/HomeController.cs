@@ -7,11 +7,11 @@ using Web.Models;
 
 namespace Web.Controllers;
 
-public class HomeController(ProductosService productosService, IMapper mapper) : Controller
+public class HomeController(ProductoService productoService, IMapper mapper) : Controller
 {
     public async Task<IActionResult> Index()
     {
-        var productos = await productosService.GetProductosDestacados();
+        var productos = await productoService.GetProductosDestacados();
         ViewBag.Productos = mapper.Map<IList<Producto>>(productos);
         return View();
     }

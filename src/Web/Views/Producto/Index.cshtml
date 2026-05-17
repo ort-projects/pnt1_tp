@@ -1,0 +1,35 @@
+@model Web.Models.ProductoListViewModel
+@{ ViewData["Title"] = "Productos"; }
+
+<div class="py-4">
+    <h2 class="mb-4 fw-semibold">Productos</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var p in Model.Productos)
+        {
+            <div class="col">
+                <a asp-controller="Producto" asp-action="Detalle" asp-route-id="@p.Id"
+                   class="text-decoration-none text-dark">
+                    <div class="producto-card">
+                        <div class="producto-img-wrapper">
+                            @if (!string.IsNullOrEmpty(p.UrlImagen))
+                            {
+                                <img src="@p.UrlImagen" alt="@p.Nombre" class="producto-img" />
+                            }
+                            else
+                            {
+                                <div class="producto-img-placeholder">
+                                    <i class="bi bi-image"></i>
+                                </div>
+                            }
+                        </div>
+                        <div class="producto-body">
+                            <p class="producto-nombre">@p.Nombre</p>
+                            <p class="producto-precio">$@p.Precio.ToString("N2")</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
