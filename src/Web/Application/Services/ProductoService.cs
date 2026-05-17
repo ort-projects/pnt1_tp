@@ -3,8 +3,13 @@ using Web.Domain;
 using Web.Infrastructure;
 namespace Web.Application.Services;
 
-public class ProductosService(WebDbContext webDbContext)
+public class ProductoService(WebDbContext webDbContext)
 {
+    public async Task<IList<Producto>> GetAllProductos()
+    {
+        return await webDbContext.Productos.ToListAsync();
+    }
+
     public async Task<IList<Producto>> GetProductosDestacados()
     {
         return await webDbContext.Productos

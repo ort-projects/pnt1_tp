@@ -30,7 +30,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         option.ExpireTimeSpan = TimeSpan.FromHours(1);
     });
 
-builder.Services.AddScoped<ProductosService>();
+builder.Services.AddScoped<ProductoService>();
 
 builder.WebHost.UseStaticWebAssets();
 
