@@ -46,3 +46,28 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.navbar-custom{
+    background-color:#121212;
+    padding:15px 40px;
+}
+
+body{
+    background-color:#dddddd;
+}
+
+.navbar-custom{
+    padding:20px 40px;
+}
+
+.navbar-custom .container-fluid{
+    background-color:#f3f3f3;
+    border-radius:14px;
+    padding:18px 25px;
+}
+
+.logo-img{
+    width:40px !important;
+    border:5px solid red;
+}
+
