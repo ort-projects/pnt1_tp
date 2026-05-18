@@ -14,7 +14,7 @@ builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(Program).Assembly));
 
 builder.Services.AddDbContext<WebDbContext>(options =>
 {
-   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddSession(options =>
@@ -25,12 +25,14 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(option => {
+    .AddCookie(option =>
+    {
         option.LoginPath = "/Admin/Login";
         option.ExpireTimeSpan = TimeSpan.FromHours(1);
     });
 
 builder.Services.AddScoped<ProductoService>();
+builder.Services.AddScoped<CategoriaService>();
 
 builder.WebHost.UseStaticWebAssets();
 
