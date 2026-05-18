@@ -10,10 +10,11 @@ public class ProductoService(WebDbContext webDbContext)
         return await webDbContext.Productos.ToListAsync();
     }
 
-    public async Task<IList<Producto>> GetProductosDestacados()
+    public async Task<IList<Producto>> GetProductosDestacados(int limit)
     {
         return await webDbContext.Productos
             .Where(p => p.Destacado)
+            .Take(limit)
             .ToListAsync();
     }
 

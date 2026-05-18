@@ -7,13 +7,18 @@ using Web.Models;
 
 namespace Web.Controllers;
 
-public class HomeController(ProductoService productoService, IMapper mapper) : Controller
+public class HomeController(ProductoService productoService, CategoriaService categoriaService, IMapper mapper) : Controller
 {
     public async Task<IActionResult> Index()
     {
-        //var productos = await productoService.GetProductosDestacados();
-        //ViewBag.Productos = mapper.Map<IList<Producto>>(productos);
-        return View();
+        var productos = await productoService.GetProductosDestacados(4);
+        var categorias = await categoriaService.GetCategoriasWithImagen(4);
+        ViewBag.Productos = mapper.Map<IList<Producto>>(productos);
+        return View(new IndexModel
+        {
+            ProductosDestacados = mapper.Map<IList<ProductoModel>>(productos),
+            Categorias = mapper.Map<IList<CategoriaModel>>(categorias)
+        });
     }
 
     public IActionResult Privacy()

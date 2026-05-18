@@ -5,11 +5,12 @@ using Web.Models;
 
 namespace Web.Controllers;
 
+[Route("Productos")]
 public class ProductosController(ProductoService productoService, IMapper mapper) : Controller
 {
     public async Task<IActionResult> Index(string? search)
     {
-        var productos = string.IsNullOrWhiteSpace(search) ? await productoService.GetAllProductos() : await productoService.GetProductosBySearch(search);;
+        var productos = string.IsNullOrWhiteSpace(search) ? await productoService.GetAllProductos() : await productoService.GetProductosBySearch(search); ;
         var viewModel = new ProductoListViewModel
         {
             Productos = mapper.Map<IList<ProductoModel>>(productos)
@@ -18,6 +19,7 @@ public class ProductosController(ProductoService productoService, IMapper mapper
         return View(viewModel);
     }
 
+    [Route("Detalle/{id}")]
     public async Task<IActionResult> Detalle(int id)
     {
         var producto = await productoService.GetProducto(id);

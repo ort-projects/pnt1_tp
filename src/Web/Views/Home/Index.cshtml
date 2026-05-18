@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Web.Domain
+@model IndexModel
+@{
     ViewData["Title"] = "MODARG";
 }
 @section Styles {
@@ -6,174 +8,51 @@
 }
 
 <main class="home-page">
-
     <div class="container py-5">
-
         <!-- DESTACADOS -->
         <section class="mb-5">
-
             <div class="section-header mb-4">
                 <h2 class="section-title">
                     DESTACADOS
                 </h2>
             </div>
-
             <div class="row g-4">
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="product-card">
-
-                        <img src="~/img/destacados/setTerra.jpeg" alt="Set Terra" class="img-fluid product-image">
-
-                        <div class="product-body">
-                            <h3 class="product-title">
-                                Set Remera + Short
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="product-card">
-                        <img src="~/img/destacados/buzo1977.jpeg" alt="Buzo 1977" class="img-fluid product-image">
-
-                        <div class="product-body">
-                            <h3 class="product-title">
-                                Hoodie 1977
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="product-card">
-
-                        <img src="~/img/destacados/remeBasic.jpeg" alt="Remera Basica" class="img-fluid product-image">
-
-                        <div class="product-body">
-                            <h3 class="product-title">
-                                Remera Básica Terra
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="product-card">
-
-                        <img src="~/img/destacados/buzoOver.jpeg" alt="Buzo Over" class="img-fluid product-image">
-
-                        <div class="product-body">
-                            <h3 class="product-title">
-                                Buzo Over
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
+                @foreach (var p in Model.ProductosDestacados)
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="@p.UrlImagen" alt="@p.Nombre" class="img-fluid product-image" />
+                            <div class="product-body">
+                                <h3 class="product-title">
+                                    @p.Nombre
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                }
             </div>
-
         </section>
-
         <!-- CATEGORIAS -->
         <section>
-
             <div class="section-header mb-4">
                 <h2 class="section-title">
                     CATEGORIAS
                 </h2>
             </div>
-
             <div class="row g-4">
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="category-card">
-
-                        <img src="~/img/categorias/buzoEsse.jpeg" alt="Buzo Essencial" class="img-fluid product-image">
-
-                        <div class="category-body">
-                            <h3 class="category-title">
-                                Buzos
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="category-card">
-
-                        <img src="~/img/categorias/RemeTerra.jpeg" alt="Reme Terra" class="img-fluid product-image">
-
-                        <div class="category-body">
-                            <h3 class="category-title">
-                                Oversize
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="category-card">
-
-                        <img src="~/img/categorias/RemeFrom.jpeg" alt="Reme From" class="img-fluid product-image">
-
-                        <div class="category-body">
-                            <h3 class="category-title">
-                                Streetwear
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- CARD -->
-                <div class="col-12 col-md-6 col-lg-3">
-
-                    <article class="category-card">
-
-                        <img src="~/img/destacados/minimal.jpeg" alt="Minimal" class="img-fluid product-image">
-
-                        <div class="category-body">
-                            <h3 class="category-title">
-                                Minimal
-                            </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </div>
-
-</main>
+                @foreach (var p in Model.Categorias)
+                {
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <article class="category-card">
+                            <img src="@p.Url" alt="@p.Nombre" class="img-fluid product-image" />
+                            <div class="category-body">
+                                <h3 class="category-title">
+                                    @p.Nombre
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </section>
+        </div>
+    </main>
