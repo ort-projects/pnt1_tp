@@ -1,27 +1,45 @@
 html {
   font-size: 14px;
   background-color: #e0dfdf;
+  min-height: 100%;
+  position: relative;
 }
 
 @media (min-width: 768px) {
+
   html {
     font-size: 16px;
   }
+
 }
 
-/* BOOTSTRAP BASE */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e0dfdf;
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+}
+
+
+/* =========================
+   BOOTSTRAP FOCUS
+========================= */
+
 .btn:focus,
 .btn:active:focus,
 .btn-link.nav-link:focus,
 .form-control:focus,
 .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #000000;
+
+  box-shadow:
+    0 0 0 0.1rem white,
+    0 0 0 0.25rem #000000;
+
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 .form-floating>.form-control-plaintext::placeholder,
 .form-floating>.form-control::placeholder {
@@ -40,9 +58,12 @@ html {
   background-color: #e0dfdf !important;
   padding: 20px;
 }
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar-custom {
-  padding: 20px 40px;
+
   background-color: #e0dfdf;
 }
 
@@ -54,37 +75,72 @@ html {
   align-items: center;
   border: none;
   box-shadow: none;
+
 }
 
+.navbar-box {
+
+  background-color: #ffffff;
+
+  border-radius: 16px;
+
+  padding: 18px 24px;
+
+}
+
+
+/* LOGO */
+
 .logo-img {
+
   width: 40px;
   height: auto;
+
 }
 
 .logo-text {
+  font-family: 'Intel One Mono', monospace;
   font-size: 28px;
   font-weight: 600;
+  color: #000000;
+
 }
 
-/* search */
+
+/* SEARCH */
+
 .search-input {
-  max-width: 700px;
-  border: none !important;
-  border-radius: 14px !important;
-  background-color: #e0dfdf !important;
-  padding: 12px 20px !important;
-  box-shadow: none !important;
+
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background-color: #e0dfdf;
+  padding: 12px 20px;
+  transition: 0.2s ease;
+
 }
 
-/* carrito */
+.search-input:focus {
+
+  background-color: #e0dfdf;
+
+  border: none;
+
+  box-shadow: none;
+
+}
+
+
+/* CART */
+
 .cart-link {
-  color: #000000 !important;
-  font-size: 28px;
-  text-decoration: none;
-}
 
-.cart-link:hover {
-  color: #000000 !important;
+  color: #000000;
+
+  font-size: 28px;
+
+  text-decoration: none;
+
 }
 
 .cart-link i {
@@ -127,7 +183,7 @@ main {
   margin: 0;
   padding-right: 80px;
   color: #000000;
-  font-size: 14px;
+
 }
 
 .footer-socials {
@@ -136,14 +192,49 @@ main {
   margin-left: 80px;
 }
 
+/* =========================
+   FOOTER
+========================= */
+
+.footer-custom {
+
+  margin-top: auto;
+
+}
+
+.footer-box {
+
+  background-color: #ffffff;
+
+  border-radius: 16px;
+
+  padding: 18px 24px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+/* LINKS */
+
 .footer-link {
-  color: #000000 !important;
+
+  color: #000000;
+
   text-decoration: none;
+
   font-size: 14px;
+
 }
 
 .footer-link:hover {
-  color: #000000 !important;
+
+  color: #000000;
+
 }
 
 
@@ -195,4 +286,32 @@ main {
   margin: 0;
   font-size: 15px;
   font-weight: 600;
+}
+/* COPYRIGHT */
+
+.footer-text {
+
+  color: #000000;
+
+  font-size: 14px;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .footer-box {
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    text-align: center;
+
+  }
+
 }
