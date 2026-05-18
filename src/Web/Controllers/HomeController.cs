@@ -11,8 +11,8 @@ public class HomeController(ProductoService productoService, IMapper mapper) : C
 {
     public async Task<IActionResult> Index()
     {
-        var productos = await productoService.GetProductosDestacados();
-        ViewBag.Productos = mapper.Map<IList<Producto>>(productos);
+        //var productos = await productoService.GetProductosDestacados();
+        //ViewBag.Productos = mapper.Map<IList<Producto>>(productos);
         return View();
     }
 
