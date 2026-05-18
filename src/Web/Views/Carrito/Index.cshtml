@@ -2,6 +2,125 @@
 
 <h1>Estoy en el carrito @Model.Id</h1>
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/home.css" />
+@{
+    ViewData["Title"] = "Carrito";
 }
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css" />
+}
+
+<main class="cart-page">
+
+    <div class="container py-5">
+
+        <!-- TITLE -->
+
+        <section class="mb-5">
+
+            <h1 class="cart-title">
+                Tu carrito
+            </h1>
+
+        </section>
+
+        <!-- PRODUCTS -->
+
+        <section class="cart-products-section">
+
+            <div class="cart-section-header mb-4">
+
+                <h2 class="cart-section-title">
+                    Productos:
+                </h2>
+
+            </div>
+
+            <!-- PRODUCT ITEM -->
+
+            <article class="cart-item">
+
+                <div class="row align-items-center g-4">
+
+                    <!-- IMAGE -->
+
+                    <div class="col-12 col-md-2">
+
+                        <img
+                            src="~/img/products/remera-dont.jpg"
+                            alt="Remera Dont"
+                            class="img-fluid cart-item-image">
+
+                    </div>
+
+                    <!-- INFO -->
+
+                    <div class="col-12 col-md-8">
+
+                        <div class="cart-item-info">
+
+                            <h3 class="cart-item-title">
+                                (1) Remera “Dont” Unisex Talle M
+                            </h3>
+
+                            <p class="cart-item-price">
+                                $35000
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- DELETE -->
+
+                    <div class="col-12 col-md-2">
+
+                        <div class="cart-item-action">
+
+                            <button class="delete-btn">
+
+                                <i class="bi bi-trash3"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- TOTAL -->
+
+        <section class="cart-total-section">
+
+            <div class="cart-total-wrapper">
+
+                <h2 class="cart-total">
+                    Total: $35000
+                </h2>
+
+            </div>
+
+        </section>
+
+        <!-- CTA -->
+
+        <section class="cart-cta-section">
+
+            <div class="cart-cta-wrapper">
+
+                <button class="confirm-btn">
+                    Confirmar Pedido
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
