@@ -8,7 +8,7 @@ namespace Web.Controllers;
 [Route("Productos")]
 public class ProductosController(ProductoService productoService, IMapper mapper) : Controller
 {
-    public async Task<IActionResult> Index(string? search)
+    public async Task<IActionResult> Index(string? search, int? categoryId)
     {
         var productos = string.IsNullOrWhiteSpace(search) ? await productoService.GetAllProductos() : await productoService.GetProductosBySearch(search); ;
         var viewModel = new ProductoListViewModel
