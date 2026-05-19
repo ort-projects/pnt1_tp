@@ -6,6 +6,14 @@ namespace Web.Application.Services;
 
 public class CategoriaService(WebDbContext webDbContext)
 {
+    public async Task<IList<Categoria>> GetAllCategorias()
+    {
+        return await webDbContext.Categorias
+            .Where(c => c.Activa)
+            .OrderBy(c => c.Nombre)
+            .ToListAsync();
+    }
+
     public async Task<IList<(Categoria, string)>> GetCategoriasWithImagen(int limit)
     {
         var categorias = await webDbContext.Categorias
