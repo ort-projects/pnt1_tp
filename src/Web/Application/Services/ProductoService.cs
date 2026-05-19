@@ -32,8 +32,18 @@ public class ProductoService(WebDbContext webDbContext)
             .ToListAsync();
     }
 
-    public async Task<Producto?> GetProducto(int id)
+    public async Task<Producto?> GetProducto(int id, bool ignoreStatus = false)
     {
-        return await webDbContext.Productos.FirstOrDefaultAsync(p => p.Id == id);
+        var queryable = webDbContext.Productos;
+        if (ignoreStatus)
+            queryable = queryable.IgnoreQueryFilters();
+        return await queryable.FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    public async Task UpdateProducto(Producto producto)
+    {
+        producto.FechaActualizacion = DateTime.Now;
+        webDbContext.Update(producto);
+        await webDbContext.SaveChangesAsync();
     }
 }

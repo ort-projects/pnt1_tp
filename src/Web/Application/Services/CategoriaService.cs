@@ -21,4 +21,11 @@ public class CategoriaService(WebDbContext webDbContext)
             .ToListAsync();
         return categorias.Select(x => (x.categoria, x.producto.UrlImagen)).ToList();
     }
+
+    public async Task<IList<(int id, string nombre)>> GetAllIdsAndNames()
+    {
+        return (await webDbContext.Categorias
+            .Select(x => new { x.Id, x.Nombre })
+            .ToListAsync()).Select(x => (x.Id, x.Nombre)).ToList();
+    }
 }
