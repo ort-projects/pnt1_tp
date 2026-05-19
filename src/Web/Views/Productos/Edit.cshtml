@@ -1,0 +1,82 @@
+@model EditProductModel
+<form id="editProductForm" method="post" action="/productos/update/@Model.Id"
+      enctype="application/x-www-form-urlencoded">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label for="CategoriaId" class="form-label">Categoría</label>
+
+        <select id="CategoriaId" name="CategoriaId" class="form-select">
+        
+            <option value="">Seleccione una categoría</option>
+
+            @foreach (var categoria in Model.Categorias)
+            {
+                if (Model.CategoriaId == categoria.Item1)
+                {
+                    <option value="@categoria.Item1" selected>
+                        @categoria.Item2
+                    </option>
+                }
+                else
+                {
+                    <option value="@categoria.Item1">
+                        @categoria.Item2
+                    </option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="Nombre" class="form-label">Nombre</label>
+        <input type="text" id="Nombre" name="Nombre" value="@Model.Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="SKU" class="form-label">SKU</label>
+        <input type="text" id="SKU" name="SKU" value="@Model.SKU" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="Descripcion" class="form-label">Descripción</label>
+        <textarea id="Descripcion" name="Descripcion" class="form-control" rows="4">@Model.Descripcion</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="Precio" class="form-label">Precio</label>
+        <input type="number" id="Precio" name="Precio"
+               value="@Model.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture)" class="form-control"
+               step="0.01" />
+    </div>
+
+    <div class="mb-3">
+        <label for="UrlImagen" class="form-label">URL de imagen</label>
+        <input type="text" id="UrlImagen" name="UrlImagen" value="@Model.UrlImagen" class="form-control" />
+    </div>
+
+    <div class="form-check mb-3">
+
+        <input asp-for="Estado" class="form-check-input" />
+        <label asp-for="Estado" class="form-check-label">Activo</label>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Destacado" class="form-check-input" />
+        <label asp-for="Destacado" class="form-check-label">Producto destacado</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submitButton">
+        Guardar
+    </button>
+</form>
+
+<script>
+    const form = document.getElementById("editProductForm");
+    const submitButton = document.getElementById("submitButton");
+
+    form.addEventListener("submit", function () {
+        submitButton.disabled = true;
+        submitButton.innerText = "Guardando...";
+    });
+</script>

@@ -20,7 +20,7 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> SignIn(string email, string password)
     {
-        if(email != "admin@admin.com" || password != "admin")
+        if (email != "admin@admin.com" || password != "admin")
         {
             ViewBag.Error = "Credenciales invalidas";
             return View("Login");

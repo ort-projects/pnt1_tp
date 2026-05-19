@@ -2,34 +2,133 @@
 @{ ViewData["Title"] = "Productos"; }
 
 <div class="py-4">
-    <h2 class="mb-4 fw-semibold">Productos</h2>
+    <div class="row g-4">
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        @foreach (var p in Model.Productos)
-        {
-            <div class="col">
-                <a asp-controller="Producto" asp-action="Detalle" asp-route-id="@p.Id"
-                   class="text-decoration-none text-dark">
-                    <div class="producto-card">
-                        <div class="producto-img-wrapper">
-                            @if (!string.IsNullOrEmpty(p.UrlImagen))
-                            {
-                                <img src="@p.UrlImagen" alt="@p.Nombre" class="producto-img" />
-                            }
-                            else
-                            {
-                                <div class="producto-img-placeholder">
-                                    <i class="bi bi-image"></i>
-                                </div>
-                            }
-                        </div>
-                        <div class="producto-body">
-                            <p class="producto-nombre">@p.Nombre</p>
-                            <p class="producto-precio">$@p.Precio.ToString("N2")</p>
-                        </div>
-                    </div>
-                </a>
+        <aside class="col-12 col-md-3">
+            <div class="filtro-sidebar">
+                <h6 class="filtro-titulo">Categorías</h6>
+                <ul class="filtro-lista">
+                    <li>
+                        <a asp-action="Index"
+                           asp-route-search="@Model.Search"
+                           class="filtro-item @(Model.CategoriaId == null ? "filtro-item--activo" : "")">
+                            Todas
+                        </a>
+                    </li>
+                    @foreach (var cat in Model.Categorias)
+                    {
+                        <li>
+                            <a asp-action="Index"
+                               asp-route-search="@Model.Search"
+                               asp-route-categoriaId="@cat.Id"
+                               class="filtro-item @(Model.CategoriaId == cat.Id ? "filtro-item--activo" : "")">
+                                @cat.Nombre
+                            </a>
+                        </li>
+                    }
+                </ul>
             </div>
-        }
+        </aside>
+
+        <div class="col-12 col-md-9">
+
+            @if (!string.IsNullOrWhiteSpace(Model.Search) || Model.CategoriaId.HasValue)
+            {
+                <p class="text-muted small mb-3">
+                    @Model.Productos.Count resultado@(Model.Productos.Count != 1 ? "s" : "")
+                    @if (!string.IsNullOrWhiteSpace(Model.Search))
+                    {
+                        <span> para "<strong>@Model.Search</strong>"</span>
+                    }
+                </p>
+            }
+
+            @if (!Model.Productos.Any())
+            {
+                <p class="text-muted">No se encontraron productos.</p>
+            }
+            else
+            {
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+                    @foreach (var p in Model.Productos)
+                    {
+                        <div class="col">
+                            <a asp-controller="Producto" asp-action="Detalle" asp-route-id="@p.Id"
+                               class="text-decoration-none text-dark">
+                                <div class="producto-card">
+                                    <div class="producto-img-wrapper">
+                                        @if (!string.IsNullOrEmpty(p.UrlImagen))
+                                        {
+                                            <img src="@p.UrlImagen" alt="@p.Nombre" class="producto-img" />
+                                        }
+                                        else
+                                        {
+                                            <div class="producto-img-placeholder">
+                                                <i class="bi bi-image"></i>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="producto-body">
+                                        <p class="producto-nombre">@p.Nombre</p>
+                                        <p class="producto-precio">$@p.Precio.ToString("N2")</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
     </div>
 </div>
+
+<style>
+    .filtro-sidebar {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 16px;
+        position: sticky;
+        top: 80px;
+    }
+
+    .filtro-titulo {
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .filtro-lista {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .filtro-lista li + li {
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .filtro-item {
+        display: block;
+        padding: 9px 4px;
+        color: #333;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.15s;
+    }
+
+    .filtro-item:hover {
+        color: #3483fa;
+    }
+
+    .filtro-item--activo {
+        color: #3483fa;
+        font-weight: 600;
+    }
+</style>

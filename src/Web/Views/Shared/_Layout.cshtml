@@ -50,10 +50,10 @@
 
                 </a>
                 <!-- SEARCH -->
-                <form class="d-flex flex-grow-1 mx-3 mx-lg-4" method="get" action="/productos/index" >
+                <form class="d-flex flex-grow-1 mx-3 mx-lg-4" method="get" asp-controller="Productos" asp-action="Index">
 
 
-                    <input class="form-control search-input" type="search" placeholder="Buscar productos" name="search" >
+                    <input class="form-control search-input" type="search" placeholder="Buscar productos" name="search" value="@Context.Request.Query["search"]" />
 
                 </form>
 

@@ -6,6 +6,14 @@ namespace Web.Application.Services;
 
 public class CategoriaService(WebDbContext webDbContext)
 {
+    public async Task<IList<Categoria>> GetAllCategorias()
+    {
+        return await webDbContext.Categorias
+            .Where(c => c.Activa)
+            .OrderBy(c => c.Nombre)
+            .ToListAsync();
+    }
+
     public async Task<IList<(Categoria, string)>> GetCategoriasWithImagen(int limit)
     {
         var categorias = await webDbContext.Categorias
@@ -20,5 +28,12 @@ public class CategoriaService(WebDbContext webDbContext)
             .Take(limit)
             .ToListAsync();
         return categorias.Select(x => (x.categoria, x.producto.UrlImagen)).ToList();
+    }
+
+    public async Task<IList<(int id, string nombre)>> GetAllIdsAndNames()
+    {
+        return (await webDbContext.Categorias
+            .Select(x => new { x.Id, x.Nombre })
+            .ToListAsync()).Select(x => (x.Id, x.Nombre)).ToList();
     }
 }

@@ -25,15 +25,34 @@ public class ProductoService(WebDbContext webDbContext)
             .ToListAsync();
     }
 
-    public async Task<IList<Producto>> GetProductosBySearch(string search)
+    public async Task<IList<Producto>> GetProductosFiltrados(string? search, int? categoriaId)
     {
-        return await webDbContext.Productos
-            .Where(p => p.Categoria.Nombre.Contains(search) || p.Nombre.Contains(search) || p.Descripcion.Contains(search) || p.Nombre.Contains(search))
-            .ToListAsync();
+        var query = webDbContext.Productos.AsQueryable();
+
+        if (categoriaId.HasValue)
+            query = query.Where(p => p.CategoriaId == categoriaId.Value);
+
+        if (!string.IsNullOrWhiteSpace(search))
+            query = query.Where(p => p.Nombre.Contains(search)
+                                  || p.SKU.Contains(search)
+                                  || p.Descripcion.Contains(search)
+                                  || p.Categoria.Nombre.Contains(search));
+
+        return await query.ToListAsync();
     }
 
-    public async Task<Producto?> GetProducto(int id)
+    public async Task<Producto?> GetProducto(int id, bool ignoreStatus = false)
     {
-        return await webDbContext.Productos.FirstOrDefaultAsync(p => p.Id == id);
+        var queryable = webDbContext.Productos;
+        if (ignoreStatus)
+            queryable = queryable.IgnoreQueryFilters();
+        return await queryable.FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    public async Task UpdateProducto(Producto producto)
+    {
+        producto.FechaActualizacion = DateTime.Now;
+        webDbContext.Update(producto);
+        await webDbContext.SaveChangesAsync();
     }
 }
