@@ -1,7 +1,5 @@
 @model Carrito
 
-<h1>Estoy en sadel carrito @Model.Id</h1>
-
 @{
     ViewData["Title"] = "Carrito";
 }
@@ -47,10 +45,7 @@
 
                     <div class="col-12 col-md-2">
 
-                        <img
-                            src="~/img/products/remera-dont.jpg"
-                            alt="Remera Dont"
-                            class="img-fluid cart-item-image">
+                        <img src="~/img/categorias/RemeFrom.jpeg" alt="Remera From" class="img-fluid cart-item-image">
 
                     </div>
 
@@ -61,7 +56,7 @@
                         <div class="cart-item-info">
 
                             <h3 class="cart-item-title">
-                                (1) Remera “Dont” Unisex Talle M
+                                (1) Remera “From” Unisex Talle M
                             </h3>
 
                             <p class="cart-item-price">
@@ -90,29 +85,55 @@
 
                 </div>
 
-            </article>
+        <!-- SUMMARY -->
 
-        </section>
+        <div class="cart-summary-inside">
 
-        <!-- TOTAL -->
+            <!-- SUBTOTAL -->
 
-        <section class="cart-total-section">
+            <div class="summary-row">
 
-            <div class="cart-total-wrapper">
+                <span class="summary-label">
+                    Subtotal
+                </span>
 
-                <h2 class="cart-total">
-                    Total: $35000
-                </h2>
+                <span class="summary-value">
+                    $35000
+                </span>
 
             </div>
 
-        </section>
+            <!-- SHIPPING -->
 
-        <!-- CTA -->
+            <div class="summary-row">
 
-        <section class="cart-cta-section">
+                <span class="summary-label">
+                    Envío
+                </span>
 
-            <div class="cart-cta-wrapper">
+                <span class="summary-value">
+                    Gratis
+                </span>
+
+            </div>
+
+            <!-- TOTAL -->
+
+            <div class="summary-row summary-total">
+
+                <span class="summary-label">
+                    Total
+                </span>
+
+                <span class="summary-value">
+                    $35000
+                </span>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <div class="confirm-wrapper">
 
                 <button class="confirm-btn">
                     Confirmar Pedido
@@ -120,8 +141,9 @@
 
             </div>
 
-        </section>
+        </div>
 
-    </div>
+    </article>
 
+</section>
 </main>

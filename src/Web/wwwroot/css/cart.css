@@ -1,0 +1,190 @@
+/* POR LAS DUDAS LO DEJO */
+
+.cart-page {
+min-height: 100vh;
+}
+
+
+/* TITLES */
+
+.cart-title,
+.cart-section-title,
+.cart-total {
+
+font-family: 'Intel One Mono', monospace;
+color: #000000;
+}
+
+.cart-title {
+font-size: 2rem;
+font-weight: 700;
+}
+
+
+.cart-section-title {
+font-size: 1.5rem;
+font-weight: 500;
+}
+
+
+.cart-total {
+font-size: 1rem;
+font-weight: 600;
+}
+
+/* CART ITEM */
+
+.cart-item {
+background-color: #ffffff;
+border-radius: 20px;
+padding: 24px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* IMAGE */
+
+.cart-item-image {
+width: 100%;
+height: 120px;
+object-fit: cover;
+border-radius: 12px;
+}
+
+/*PRODUCT INFO */
+
+.cart-item-title {
+font-family: 'Intel One Mono', monospace;
+font-size: 1.4rem;
+font-weight: 500;
+margin-bottom: 12px;
+color: #000000;
+}
+
+.cart-item-price {
+font-size: 1.2rem;
+margin: 0;
+color: #000000;
+}
+
+/*  DELETE  */
+
+.cart-item-action {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.delete-btn {
+border: none;
+background: transparent;
+font-size: 1.5rem;
+color: #fb0404;
+transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+opacity: 0.6;
+
+}
+
+/* TICKET JUNTO */
+.cart-summary-inside {
+margin-top: 40px;
+padding-top: 32px;
+border-top: 1px solid #d9d9d9;
+}
+
+/* ROW */
+
+.summary-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 14px 0;
+}
+
+
+/* LABELS */
+
+.summary-label,
+.summary-value {
+font-family: 'Intel One Mono', monospace;
+color: #000000;
+}
+
+.summary-label {
+font-size: 1rem;
+}
+
+.summary-value {
+font-size: 1rem;
+font-weight: 600;
+}
+
+/* TOTAL */
+
+.summary-total {
+margin-top: 8px;
+padding-top: 22px;
+border-top: 1px solid #e6e6e6;
+}
+
+.summary-total .summary-label,
+.summary-total .summary-value {
+font-size: 1.4rem;
+font-weight: 700;
+}
+
+
+/* BUTTON */
+.confirm-wrapper {
+display: flex;
+justify-content: center;
+margin-top: 36px;
+}
+
+.confirm-btn {
+border: none;
+background-color: #d4d4d4;
+color: #1d8b49;
+font-family: 'Intel One Mono', monospace;
+font-size: 1.5rem;
+font-weight: 700;
+padding: 18px 40px;
+border-radius: 22px;
+}
+
+.confirm-btn:hover {
+transform: translateY(-2px);
+background-color: #cfcfcf;
+}
+
+/*  RESPON  */
+
+@media (max-width: 768px) {
+.cart-title {
+font-size: 2.2rem;
+}
+
+.cart-section-title {
+font-size: 1.6rem;
+}
+
+.cart-total {
+font-size: 1.6rem;
+}
+
+.cart-item {
+padding: 18px;
+}
+
+.cart-item-title {
+font-size: 1.1rem;
+}
+
+.cart-total-section {
+padding-top: 80px;
+padding-bottom: 60px;
+}
+
+}
