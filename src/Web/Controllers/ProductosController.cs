@@ -6,14 +6,19 @@ using Web.Models;
 namespace Web.Controllers;
 
 [Route("Productos")]
-public class ProductosController(ProductoService productoService, IMapper mapper) : Controller
+public class ProductosController(ProductoService productoService, CategoriaService categoriaService, IMapper mapper) : Controller
 {
-    public async Task<IActionResult> Index(string? search, int? categoryId)
+    public async Task<IActionResult> Index(string? search, int? categoriaId)
     {
-        var productos = string.IsNullOrWhiteSpace(search) ? await productoService.GetAllProductos() : await productoService.GetProductosBySearch(search); ;
+        var productos = await productoService.GetProductosFiltrados(search, categoriaId);
+        var categorias = await categoriaService.GetAllCategorias();
+
         var viewModel = new ProductoListViewModel
         {
-            Productos = mapper.Map<IList<ProductoModel>>(productos)
+            Productos = mapper.Map<IList<ProductoModel>>(productos),
+            Categorias = mapper.Map<IList<CategoriaModel>>(categorias),
+            Search = search,
+            CategoriaId = categoriaId
         };
 
         return View(viewModel);
