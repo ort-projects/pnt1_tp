@@ -1,0 +1,183 @@
+/* pageee */
+
+.products-page {
+ min-height: 100vh;
+}
+
+
+/*FILTER SIDEBAR */
+
+.filtro-sidebar {
+background-color: rgba(255, 255, 255, 0.55);
+border-radius: 16px;
+padding: 16px;
+position: sticky;
+top: 100px;
+box-shadow: blur(4px);
+}
+
+
+/* TITLE */
+
+.filtro-titulo {
+font-family: 'Intel One Mono', monospace;
+font-size: 0.78rem;
+font-weight: 600;
+color: #000000;
+line-height: 1;
+letter-spacing: 0.5px;
+margin-bottom: 14px;
+padding-bottom: 10px;
+border-bottom: 1px solid #ececec;
+}
+
+
+/* LIST */
+
+.filtro-lista {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.filtro-lista li {
+ width: 100%;
+}
+/* ITEM */
+
+.filtro-item {
+display: flex;
+width: 100%;
+text-decoration: none;
+font-family: 'Intel One Mono', monospace;
+color: #000000;
+font-size: 0.72rem;
+letter-spacing: 0.5px;
+line-height:1.4;
+display: flex;
+align-items: center;
+letter-spacing: 0.5px;
+font-weight: 300;
+padding: 8px 10px;
+border-radius: 10px;
+transition:
+        background-color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+/* HOVER */
+
+.filtro-item:hover {
+background-color: #f1f1f1;
+color: #000000;
+}
+
+
+/* ACTIVE */
+
+.filtro-item--activo {
+background-color: #000000;
+color: #ffffff;
+font-weight: 600;
+}
+
+
+/* RESULTS TEXT*/
+
+.products-result-text {
+font-size: 0.95rem;
+color: #666666;
+}
+
+
+/* PRODUCT CARD */
+
+.producto-card {
+background-color: #ffffff;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* HOVER */
+
+.producto-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* IMAGE */
+
+.producto-img-wrapper {
+width: 100%;
+aspect-ratio: 1 / 1;
+overflow: hidden;
+background-color: #f5f5f5;
+}
+
+
+.producto-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+
+/* PLACEHOLDER */
+.producto-img-placeholder {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 3rem;
+color: #cfcfcf;
+}
+
+
+/* BODY */
+
+.producto-body {
+padding: 18px;
+}
+
+
+/* NAME */
+
+.producto-nombre {
+font-family: 'Intel One Mono', monospace;
+font-size: 1rem;
+font-weight: 500;
+color: #000000;
+margin-bottom: 10px;
+}
+
+
+/* PRICE */
+
+.producto-precio {
+margin: 0;
+font-size: 1rem;
+font-weight: 600;
+color: #000000;
+}
+
+
+/*RESPONSIVE*/
+
+@media (max-width: 768px) {
+.filtro-sidebar {
+position: static;
+}
+}

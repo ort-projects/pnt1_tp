@@ -1,10 +1,16 @@
 @model Web.Models.ProductoListViewModel
 @{ ViewData["Title"] = "Productos"; }
 
-<div class="py-4">
-    <div class="row g-4">
+@section Styles {
 
-        <aside class="col-12 col-md-3">
+    <link rel="stylesheet" href="~/css/prod.css" />
+}
+
+<main class="products-page py-5">
+<div class="py-4">
+    <div class="row gx-5 gy-4">
+
+        <aside class="col-12 col-md-2">
             <div class="filtro-sidebar">
                 <h6 class="filtro-titulo">Categorías</h6>
                 <ul class="filtro-lista">
@@ -30,11 +36,11 @@
             </div>
         </aside>
 
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-md-10">
 
             @if (!string.IsNullOrWhiteSpace(Model.Search) || Model.CategoriaId.HasValue)
             {
-                <p class="text-muted small mb-3">
+                <p class="products-result-text mb-4">
                     @Model.Productos.Count resultado@(Model.Productos.Count != 1 ? "s" : "")
                     @if (!string.IsNullOrWhiteSpace(Model.Search))
                     {
@@ -83,52 +89,4 @@
     </div>
 </div>
 
-<style>
-    .filtro-sidebar {
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 16px;
-        position: sticky;
-        top: 80px;
-    }
-
-    .filtro-titulo {
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #666;
-        margin-bottom: 12px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .filtro-lista {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .filtro-lista li + li {
-        border-top: 1px solid #f0f0f0;
-    }
-
-    .filtro-item {
-        display: block;
-        padding: 9px 4px;
-        color: #333;
-        text-decoration: none;
-        font-size: 0.95rem;
-        transition: color 0.15s;
-    }
-
-    .filtro-item:hover {
-        color: #3483fa;
-    }
-
-    .filtro-item--activo {
-        color: #3483fa;
-        font-weight: 600;
-    }
-</style>
+</main>
