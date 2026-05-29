@@ -1,0 +1,195 @@
+/* PAGE */
+
+.pedido-page {
+    min-height: 100vh;
+}
+
+
+/* SUCCESS HEADER */
+
+.pedido-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 48px 0 32px;
+}
+
+.pedido-success-icon {
+    font-size: 4rem;
+    color: #1d8b49;
+    margin-bottom: 8px;
+}
+
+.pedido-title {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+.pedido-subtitle {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+}
+
+.pedido-date {
+    font-size: 0.9rem;
+    color: #888888;
+    margin: 0;
+}
+
+
+/* SECTION TITLE */
+
+.pedido-section-title {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+
+/* ITEM CARD */
+
+.pedido-item {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.pedido-item-nombre {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    margin: 0 0 4px;
+}
+
+.pedido-item-sku {
+    font-size: 0.82rem;
+    color: #888888;
+    margin: 0;
+}
+
+.pedido-item-cantidad {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1rem;
+    color: #555555;
+    margin: 0;
+}
+
+.pedido-item-precio {
+    font-size: 0.9rem;
+    color: #555555;
+    margin: 0;
+}
+
+.pedido-item-subtotal {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+
+/* SUMMARY */
+
+.pedido-summary {
+    padding-top: 32px;
+    border-top: 1px solid #d9d9d9;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.summary-label,
+.summary-value {
+    font-family: 'Intel One Mono', monospace;
+    color: #000000;
+}
+
+.summary-label {
+    font-size: 1rem;
+}
+
+.summary-value {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.summary-total .summary-label,
+.summary-total .summary-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+
+/* CTA */
+
+.pedido-cta {
+    display: flex;
+    justify-content: center;
+}
+
+.pedido-btn {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Intel One Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.pedido-btn:hover {
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+
+/* ADMIN TABLE */
+
+.pedido-admin-title {
+    font-family: 'Intel One Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .pedido-title {
+        font-size: 1.6rem;
+    }
+
+    .pedido-item {
+        padding: 16px;
+    }
+
+    .pedido-item-nombre {
+        margin-bottom: 2px;
+    }
+
+    .pedido-item-cantidad,
+    .pedido-item-precio,
+    .pedido-item-subtotal {
+        margin-top: 4px;
+    }
+}

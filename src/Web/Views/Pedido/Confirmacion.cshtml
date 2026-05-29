@@ -1,0 +1,79 @@
+@model Web.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Pedido confirmado";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pedido.css" />
+}
+
+<main class="pedido-page">
+    <div class="container py-5">
+
+        <!-- SUCCESS HEADER -->
+        <section class="pedido-success mb-5">
+            <i class="bi bi-check-circle-fill pedido-success-icon"></i>
+            <h1 class="pedido-title">¡Pedido confirmado!</h1>
+            <p class="pedido-subtitle">Pedido #@Model.NumeroPedido</p>
+            <p class="pedido-date">@Model.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</p>
+        </section>
+
+        <!-- ITEMS -->
+        <section class="mb-5">
+
+            <h2 class="pedido-section-title mb-4">Resumen del pedido</h2>
+
+            <div class="d-flex flex-column gap-3">
+
+                @foreach (var item in Model.Items)
+                {
+                    <article class="pedido-item">
+                        <div class="row align-items-center g-2">
+
+                            <!-- NOMBRE Y SKU -->
+                            <div class="col-12 col-md-5">
+                                <p class="pedido-item-nombre">@item.NombreProducto</p>
+                                <p class="pedido-item-sku">SKU: @item.SKU</p>
+                            </div>
+
+                            <!-- CANTIDAD -->
+                            <div class="col-6 col-md-2 text-md-center">
+                                <p class="pedido-item-cantidad">x@item.Cantidad</p>
+                            </div>
+
+                            <!-- PRECIO UNITARIO -->
+                            <div class="col-6 col-md-3 text-md-end">
+                                <p class="pedido-item-precio">$@item.PrecioUnitario.ToString("N2") c/u</p>
+                            </div>
+
+                            <!-- SUBTOTAL -->
+                            <div class="col-12 col-md-2 text-md-end">
+                                <p class="pedido-item-subtotal">$@item.Subtotal.ToString("N2")</p>
+                            </div>
+
+                        </div>
+                    </article>
+                }
+
+            </div>
+
+        </section>
+
+        <!-- TOTAL -->
+        <div class="pedido-summary mb-5">
+            <div class="summary-row summary-total">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">$@Model.Total.ToString("N2")</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="pedido-cta">
+            <a asp-controller="Home" asp-action="Index" class="pedido-btn">
+                Seguir comprando
+            </a>
+        </div>
+
+    </div>
+</main>

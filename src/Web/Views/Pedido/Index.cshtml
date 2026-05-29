@@ -1,0 +1,88 @@
+@model IEnumerable<Web.Models.PedidoViewModel>
+
+@{
+    ViewData["Title"] = "Pedidos";
+    Layout = "_LayoutAdmin";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pedido.css" />
+}
+
+<div class="container py-4">
+
+    <h1 class="pedido-admin-title mb-4">Pedidos</h1>
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">No hay pedidos registrados.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Fecha</th>
+                        <th>Productos</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var pedido in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>#@pedido.NumeroPedido</strong>
+                            </td>
+
+                            <td>
+                                @pedido.FechaCreacion.ToString("dd/MM/yyyy HH:mm")
+                            </td>
+
+                            <td>
+                                @pedido.Items.Sum(i => i.Cantidad) unidad(es)
+                            </td>
+
+                            <td>
+                                <strong>$@pedido.Total.ToString("N2")</strong>
+                            </td>
+
+                            <td>
+                                @if (pedido.Estado)
+                                {
+                                    <span class="badge bg-success">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Cancelado</span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (pedido.Estado)
+                                {
+                                    <form asp-controller="Pedido" asp-action="Cancelar" method="post">
+                                        <input type="hidden" name="id" value="@pedido.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            Cancelar
+                                        </button>
+                                    </form>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    }
+
+</div>

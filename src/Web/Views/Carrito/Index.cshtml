@@ -106,7 +106,9 @@
                     </div>
 
                     <div class="confirm-wrapper">
-                        <button class="confirm-btn">Confirmar Pedido</button>
+                        <form asp-controller="Pedido" asp-action="Confirmar" method="post">
+                            <button type="submit" class="confirm-btn">Confirmar Pedido</button>
+                        </form>
                     </div>
 
                 </div>
