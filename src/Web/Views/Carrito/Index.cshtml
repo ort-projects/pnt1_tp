@@ -1,149 +1,118 @@
-@model Carrito
+@model Web.Models.CarritoViewModel
 
 @{
     ViewData["Title"] = "Carrito";
 }
 
 @section Styles {
-
     <link rel="stylesheet" href="~/css/cart.css" />
 }
 
 <main class="cart-page">
-
     <div class="container py-5">
 
         <!-- TITLE -->
-
         <section class="mb-5">
-
-            <h1 class="cart-title">
-                Tu carrito
-            </h1>
-
+            <h1 class="cart-title">Tu carrito</h1>
         </section>
 
-        <!-- PRODUCTS -->
-
-        <section class="cart-products-section">
-
-            <div class="cart-section-header mb-4">
-
-                <h2 class="cart-section-title">
-                    Productos:
-                </h2>
-
+        @if (!Model.Items.Any())
+        {
+            <!-- EMPTY STATE -->
+            <div class="cart-empty">
+                <i class="bi bi-cart3 cart-empty-icon"></i>
+                <p class="cart-empty-text">Tu carrito está vacío</p>
+                <a asp-controller="Productos" asp-action="Index" class="cart-empty-link">
+                    Ver productos
+                </a>
             </div>
+        }
+        else
+        {
+            <!-- PRODUCTS -->
+            <section class="cart-products-section">
 
-            <!-- PRODUCT ITEM -->
+                <div class="cart-section-header mb-4">
+                    <h2 class="cart-section-title">Productos:</h2>
+                </div>
 
-            <article class="cart-item">
+                <div class="d-flex flex-column gap-3">
 
-                <div class="row align-items-center g-4">
+                    @foreach (var item in Model.Items)
+                    {
+                        <article class="cart-item">
+                            <div class="row align-items-center g-4">
 
-                    <!-- IMAGE -->
+                                <!-- IMAGE -->
+                                <div class="col-12 col-md-2">
+                                    @if (!string.IsNullOrEmpty(item.UrlImagen))
+                                    {
+                                        <img src="@item.UrlImagen" alt="@item.Nombre" class="img-fluid cart-item-image" />
+                                    }
+                                    else
+                                    {
+                                        <div class="cart-item-image cart-item-placeholder">
+                                            <i class="bi bi-image"></i>
+                                        </div>
+                                    }
+                                </div>
 
-                    <div class="col-12 col-md-2">
+                                <!-- INFO -->
+                                <div class="col-12 col-md-8">
+                                    <div class="cart-item-info">
+                                        <h3 class="cart-item-title">
+                                            (@item.Cantidad) @item.Nombre
+                                        </h3>
+                                        <p class="cart-item-price">
+                                            $@item.Subtotal.ToString("N2")
+                                        </p>
+                                    </div>
+                                </div>
 
-                        <img src="~/img/categorias/RemeFrom.jpeg" alt="Remera From" class="img-fluid cart-item-image">
+                                <!-- DELETE -->
+                                <div class="col-12 col-md-2">
+                                    <div class="cart-item-action">
+                                        <form asp-controller="Carrito" asp-action="Eliminar" method="post">
+                                            <input type="hidden" name="carritoProductoId" value="@item.CarritoProductoId" />
+                                            <button type="submit" class="delete-btn" title="Eliminar">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </article>
+                    }
+
+                </div>
+
+                <!-- SUMMARY -->
+                <div class="cart-summary-inside">
+
+                    <div class="summary-row">
+                        <span class="summary-label">Subtotal</span>
+                        <span class="summary-value">$@Model.Total.ToString("N2")</span>
                     </div>
 
-                    <!-- INFO -->
-
-                    <div class="col-12 col-md-8">
-
-                        <div class="cart-item-info">
-
-                            <h3 class="cart-item-title">
-                                (1) Remera “From” Unisex Talle M
-                            </h3>
-
-                            <p class="cart-item-price">
-                                $35000
-                            </p>
-
-                        </div>
-
+                    <div class="summary-row">
+                        <span class="summary-label">Envío</span>
+                        <span class="summary-value">Gratis</span>
                     </div>
 
-                    <!-- DELETE -->
+                    <div class="summary-row summary-total">
+                        <span class="summary-label">Total</span>
+                        <span class="summary-value">$@Model.Total.ToString("N2")</span>
+                    </div>
 
-                    <div class="col-12 col-md-2">
-
-                        <div class="cart-item-action">
-
-                            <button class="delete-btn">
-
-                                <i class="bi bi-trash3"></i>
-
-                            </button>
-
-                        </div>
-
+                    <div class="confirm-wrapper">
+                        <button class="confirm-btn">Confirmar Pedido</button>
                     </div>
 
                 </div>
 
-        <!-- SUMMARY -->
+            </section>
+        }
 
-        <div class="cart-summary-inside">
-
-            <!-- SUBTOTAL -->
-
-            <div class="summary-row">
-
-                <span class="summary-label">
-                    Subtotal
-                </span>
-
-                <span class="summary-value">
-                    $35000
-                </span>
-
-            </div>
-
-            <!-- SHIPPING -->
-
-            <div class="summary-row">
-
-                <span class="summary-label">
-                    Envío
-                </span>
-
-                <span class="summary-value">
-                    Gratis
-                </span>
-
-            </div>
-
-            <!-- TOTAL -->
-
-            <div class="summary-row summary-total">
-
-                <span class="summary-label">
-                    Total
-                </span>
-
-                <span class="summary-value">
-                    $35000
-                </span>
-
-            </div>
-
-            <!-- BUTTON -->
-
-            <div class="confirm-wrapper">
-
-                <button class="confirm-btn">
-                    Confirmar Pedido
-                </button>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</section>
+    </div>
 </main>

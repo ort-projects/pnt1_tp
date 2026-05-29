@@ -33,6 +33,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddScoped<ProductoService>();
 builder.Services.AddScoped<CategoriaService>();
+builder.Services.AddScoped<CarritoService>();
 
 builder.WebHost.UseStaticWebAssets();
 

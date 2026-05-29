@@ -58,9 +58,14 @@
                 </form>
 
                 <!-- CART -->
-                <a href="#" class="cart-link">
+                <a asp-controller="Carrito" asp-action="Index" class="cart-link">
 
                     <i class="bi bi-cart3"></i>
+                    @{ var cartCount = Context.Session.GetInt32("CarritoCount") ?? 0; }
+                    @if (cartCount > 0)
+                    {
+                        <span>(@cartCount)</span>
+                    }
 
                 </a>
 
