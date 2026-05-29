@@ -1,0 +1,96 @@
+@model Web.Models.ProductoModel
+@{ ViewData["Title"] = Model.Nombre; }
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/prod.css" />
+}
+
+<div class="detalle-page py-4">
+
+    <!-- BACK -->
+    <div class="mb-4">
+        <a asp-action="Index" class="detalle-volver">
+            <i class="bi bi-arrow-left"></i>
+            Volver a productos
+        </a>
+    </div>
+
+    <div class="row gx-5 gy-4 align-items-start">
+
+        <!-- IMAGE -->
+        <div class="col-12 col-md-6">
+            <div class="detalle-img-wrapper">
+                @if (!string.IsNullOrEmpty(Model.UrlImagen))
+                {
+                    <img src="@Model.UrlImagen" alt="@Model.Nombre" class="detalle-img" />
+                }
+                else
+                {
+                    <div class="detalle-img-placeholder">
+                        <i class="bi bi-image"></i>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="col-12 col-md-6">
+            <div class="detalle-info">
+
+                <!-- SKU -->
+                <span class="detalle-sku">SKU: @Model.SKU</span>
+
+                <!-- NAME -->
+                <h1 class="detalle-nombre">@Model.Nombre</h1>
+
+                <!-- PRICE -->
+                <p class="detalle-precio">$@Model.Precio.ToString("N2")</p>
+
+                <!-- DIVIDER -->
+                <hr class="detalle-divider" />
+
+                <!-- DESCRIPTION -->
+                @if (!string.IsNullOrWhiteSpace(Model.Descripcion))
+                {
+                    <div class="detalle-descripcion-section">
+                        <p class="detalle-label">Descripción</p>
+                        <p class="detalle-descripcion">@Model.Descripcion</p>
+                    </div>
+                }
+
+                <!-- QUANTITY -->
+                <div class="detalle-cantidad-section">
+                    <p class="detalle-label">Cantidad</p>
+                    <div class="detalle-cantidad-ctrl">
+                        <button class="cantidad-btn" id="btn-menos" onclick="cambiarCantidad(-1)">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <span class="cantidad-valor" id="cantidad">1</span>
+                        <button class="cantidad-btn" id="btn-mas" onclick="cambiarCantidad(1)">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ADD TO CART -->
+                <button class="detalle-add-btn">
+                    <i class="bi bi-cart3 me-2"></i>
+                    Agregar al carrito
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        let cantidad = 1;
+        function cambiarCantidad(delta) {
+            cantidad = Math.max(1, cantidad + delta);
+            document.getElementById('cantidad').textContent = cantidad;
+        }
+    </script>
+}
