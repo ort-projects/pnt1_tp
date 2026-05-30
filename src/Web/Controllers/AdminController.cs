@@ -1,13 +1,16 @@
 using System.Security.Claims;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Web.Application.Services;
+using Web.Models;
 
 namespace Web.Controllers;
 
 [Authorize]
-public class AdminController : Controller
+public class AdminController(ProductoService productosService, IMapper mapper) : Controller
 {
     [AllowAnonymous]
     public IActionResult Login()
@@ -38,8 +41,10 @@ public class AdminController : Controller
         return RedirectToAction("Index", "Admin");
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var productos = await productosService.GetAllProductos();
+        var productosModels = mapper.Map<List<ProductoModelAdmin>>(productos);
+        return View(productosModels);
     }
 }

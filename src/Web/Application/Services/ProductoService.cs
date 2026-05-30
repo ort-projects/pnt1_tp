@@ -7,7 +7,9 @@ public class ProductoService(WebDbContext webDbContext)
 {
     public async Task<IList<Producto>> GetAllProductos()
     {
-        return await webDbContext.Productos.ToListAsync();
+        return await webDbContext.Productos
+            .Include(x => x.Categoria)
+            .ToListAsync();
     }
 
     public async Task<IList<Producto>> GetProductosDestacados(int limit)
@@ -54,5 +56,10 @@ public class ProductoService(WebDbContext webDbContext)
         producto.FechaActualizacion = DateTime.Now;
         webDbContext.Update(producto);
         await webDbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteProducto(Producto producto)
+    {
+        await webDbContext.Productos.Where(p => p.Id == producto.Id).ExecuteDeleteAsync();
     }
 }

@@ -57,4 +57,15 @@ public class ProductosController(ProductoService productoService, CategoriaServi
         await productoService.UpdateProducto(producto);
         return RedirectToAction("Edit", new { id });
     }
+
+    [Authorize]
+    [HttpPost("Delete/{id}")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var producto = await productoService.GetProducto(id, true);
+        if (producto is null) return NotFound();
+        await productoService.DeleteProducto(producto);
+        return RedirectToAction("Index", "Admin");
+    }
 }

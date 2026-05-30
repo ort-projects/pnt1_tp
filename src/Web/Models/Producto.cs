@@ -20,6 +20,11 @@ public class EditProductModel : ProductoModel
     public IList<(int id, string nombre)> Categorias { get; set; }
 }
 
+public class ProductoModelAdmin : ProductoModel
+{
+    public string NombreCategoria { get; set; }
+}
+
 public class UpdateProductoModel
 {
     public int? CategoriaId { get; set; }

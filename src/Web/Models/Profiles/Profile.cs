@@ -11,6 +11,9 @@ public class Profile : AutoMapper.Profile
             .ForMember(dest => dest.Url, opt => opt.Ignore());
         CreateMap<Producto, EditProductModel>()
             .IncludeBase<Producto, ProductoModel>();
+        CreateMap<Producto, ProductoModelAdmin>()
+            .ForMember(dest => dest.NombreCategoria, opt => opt.MapFrom(src => src.Categoria.Nombre))
+            .IncludeBase<Producto, ProductoModel>();
         CreateMap<(Categoria, string), CategoriaModel>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Item1.Id))
             .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Item1.Nombre))
