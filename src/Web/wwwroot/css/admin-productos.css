@@ -1,0 +1,246 @@
+/* ADMIN PRODUCTOS */
+
+
+/* TITULO */
+
+.admin-productos-title {
+font-family: 'Intel One Mono', monospace;
+font-size: 2.4rem;
+font-weight: 600;
+color: #000000;
+margin: 0;
+}
+
+
+/* TOOLBAR */
+
+.admin-toolbar {
+display: flex;
+justify-content: flex-start;
+margin-bottom: 24px;
+}
+
+
+/* BOTON VOLVER */
+
+.admin-back-btn {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+text-decoration: none;
+color: #000000;
+background-color: #ffffff;
+border-radius: 14px;
+padding: 12px 18px;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.85rem;
+transition: 0.2s ease;
+}
+
+
+.admin-back-btn:hover {
+background-color: #f5f5f5;
+color: #000000;
+}
+
+
+/* CONTENEDOR TABLA */
+
+.admin-productos-table {
+background-color: #ffffff;
+border-radius: 20px;
+padding: 24px;
+overflow: hidden;
+}
+
+
+/* TABLA */
+
+.admin-productos-table table {
+margin-bottom: 0;
+border-collapse: separate;
+border-spacing: 0 12px;
+}
+
+
+/* HEADER */
+
+.admin-productos-table thead th {
+background-color: #f5f5f5;
+color: #000000;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.85rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+padding: 16px;
+border: none;
+}
+
+
+/* FILAS */
+
+.admin-productos-table tbody tr {
+background-color: #ffffff;
+transition: 0.2s ease;
+}
+
+
+.admin-productos-table tbody tr:hover {
+background-color: #fafafa;
+}
+
+
+/* CELDAS */
+
+.admin-productos-table tbody td {
+padding: 18px 16px;
+vertical-align: middle;
+border-top: 1px solid #f2f2f2;
+border-bottom: 1px solid #f2f2f2;
+}
+
+
+/* BORDES LATERALES */
+
+.admin-productos-table tbody td:first-child {
+border-left: 1px solid #f2f2f2;
+border-radius: 12px 0 0 12px;
+}
+
+
+.admin-productos-table tbody td:last-child {
+border-right: 1px solid #f2f2f2;
+border-radius: 0 12px 12px 0;
+}
+
+
+/* ACCIONES */
+
+.admin-productos-table td.text-end {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+gap: 10px;
+}
+
+
+/* BOTON EDITAR */
+
+.admin-productos-table .btn-outline-primary {
+border-radius: 12px;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+padding: 8px 14px;
+}
+
+
+/* BOTON ELIMINAR */
+
+.admin-productos-table .btn-outline-danger {
+border-radius: 12px;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+padding: 8px 14px;
+}
+/* ACCIONES  */
+
+.admin-actions {
+display: flex;
+justify-content:flex-start;
+align-items: center;
+gap: 20px;
+margin-bottom: 24px;
+}
+
+
+/* SEARCH */
+
+.admin-search {
+display: flex;
+align-items: center;
+gap: 12px;
+background-color: #ffffff;
+border-radius: 14px;
+padding: 14px 18px;
+width: 320px;
+flex: 0 0 auto;
+}
+
+
+.admin-search i {
+font-size: 1rem;
+color: #555555;
+}
+
+
+.admin-search-input {
+border: none;
+background: transparent;
+width: 100%;
+font-family: 'Intel One Mono', monospace;
+outline: none;
+}
+
+
+.admin-search-input::placeholder {
+color: #555555;
+}
+
+
+/* ADD BUTTON */
+
+.admin-add-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: #ffffff;
+color: #000000;
+text-decoration: none;
+border-radius: 14px;
+padding: 14px 24px;
+font-family: 'Intel One Mono', monospace;
+transition: 0.2s ease;
+white-space: nowrap;
+width: fit-content;
+flex: 0 0 auto;
+}
+
+
+.admin-add-btn:hover {
+background-color: #ececec;
+color: #000000;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .admin-productos-title {
+        font-size: 1.8rem;
+    }
+
+    .admin-productos-table {
+        padding: 14px;
+    }
+
+    .admin-productos-table td.text-end {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-search {
+        max-width: 100%;
+    }
+
+    .admin-add-btn {
+        width: 100%;
+    }
+
+}

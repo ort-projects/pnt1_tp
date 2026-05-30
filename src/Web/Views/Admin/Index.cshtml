@@ -5,9 +5,30 @@
 @{
     Layout = "_LayoutAdmin";
 }
-<div class="text-center">
+
+@section Styles {
+
+    <link rel="stylesheet"href="~/css/admin-productos.css"asp-append-version="true" />
+
+}
+<div class="admin-toolbar mb-4">
+    <a href="/admin" class="admin-back-btn"> Atras</a>
+</div>
+<h1 class="admin-productos-title mb-4"> Gestion de Productos </h1>
+<div class="admin-actions mb-4">
+<div class="admin-search">
+    <i class="bi bi-search"></i>
+    <input type="text"placeholder="Buscar producto"class="admin-search-input">
+</div>
+<a href="/productos/alta"
+       class="admin-add-btn"><i class="bi bi-plus-lg"></i> Agregar Producto
+   </a>
+</div>
+<div class="admin-productos-page">
+<div class="table-responsive admin-productos-table">
+
     <table class="table table-striped table-hover align-middle">
-        <thead class="table-dark">
+        <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Categoría</th>
@@ -42,4 +63,6 @@
             }
         </tbody>
     </table>
+    </div>
 </div>
+

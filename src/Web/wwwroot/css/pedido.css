@@ -193,3 +193,76 @@
         margin-top: 4px;
     }
 }
+/* ADMIN PEDIDOS// lo agrege aca porque no tenia sentido hacer otro css */
+
+.table-responsive {
+background-color: #ffffff;
+border-radius: 20px;
+padding: 24px;
+overflow: hidden;
+}
+
+
+/* TABLA */
+
+.table {
+margin-bottom: 0;
+}
+
+
+/* HEADER */
+
+.table thead th {
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+color: #777777;
+border-bottom: 1px solid #ececec;
+padding-top: 18px;
+padding-bottom: 18px;
+}
+
+
+/* FILAS */
+
+.table tbody td {
+padding-top: 18px;
+padding-bottom: 18px;
+vertical-align: middle;
+border-color: #f2f2f2;
+}
+
+
+/* HOVER */
+
+.table-hover tbody tr:hover {
+background-color: #fafafa;
+}
+
+
+/* BADGES */
+
+.badge {
+padding: 8px 12px;
+border-radius: 10px;
+font-family: 'Intel One Mono', monospace;
+font-weight: 500;
+}
+
+
+/* BOTON CANCELAR */
+
+.btn-outline-danger {
+border-radius: 12px;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+padding: 8px 14px;
+transition: 0.2s ease;
+}
+
+
+.btn-outline-danger:hover {
+transform: translateY(-1px);
+}
