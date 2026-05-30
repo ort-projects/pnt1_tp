@@ -1,0 +1,201 @@
+/* DETALLE PRODUCTO */
+
+/* CONTENEDOR */
+
+.detalle-page {
+padding-top: 20px;
+}
+
+
+/* VOLVER */
+
+.detalle-volver {
+background-color: transparent;
+padding: 0;
+border-radius: 0;
+font-size: 14px;
+}
+
+.detalle-volver:hover {
+background-color: transparent;
+}
+
+
+/* IMAGEN */
+
+.detalle-img-wrapper {
+border-radius: 24px;
+background-color: transparent;
+}
+
+
+.detalle-img {
+border-radius: 24px;
+}
+
+
+/* PANEL INFO */
+
+.detalle-info {
+background-color: transparent;
+border-radius: 0;
+padding: 0;
+gap: 32px;
+}
+
+
+/* SKU */
+
+.detalle-sku {
+display: none;
+}
+
+
+/* TITULO */
+
+.detalle-nombre {
+font-family: 'Intel One Mono', monospace;
+font-size: 3rem;
+font-weight: 500;
+color: #000000;
+line-height: 1.1;
+margin: 0;
+}
+
+
+/* PRECIO */
+
+.detalle-precio {
+font-family: 'Intel One Mono', monospace;
+font-size: 2.2rem;
+font-weight: 500;
+color: #000000;
+margin: 0;
+}
+
+
+/* DIVIDER */
+
+.detalle-divider {
+display: none;
+}
+
+
+/* LABELS */
+
+.detalle-label {
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+color: #777777;
+}
+
+
+/* DESCRIPCION */
+
+.detalle-descripcion {
+font-family: 'Intel One Mono', monospace;
+font-size: 1.4rem;
+line-height: 1.7;
+color: #000000;
+max-width: 700px;
+}
+
+
+/* CANTIDAD */
+
+.detalle-cantidad-section {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+
+.detalle-cantidad-input {
+width: 100px;
+border: none;
+background-color: #d8d8d8;
+border-radius: 12px;
+padding: 12px;
+}
+
+
+.detalle-cantidad-input:focus {
+border: none;
+box-shadow: none;
+}
+
+
+/* BOTON */
+
+.detalle-add-btn {
+width: fit-content;
+padding: 16px 28px;
+background-color: #d8d8d8;
+color: #3f8f59;
+border: none;
+border-radius: 14px;
+font-family: 'Intel One Mono', monospace;
+font-size: 1rem;
+font-weight: 500;
+transition: 0.2s ease;
+}
+
+
+.detalle-add-btn:hover {
+background-color: #cecece;
+color: #3f8f59;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+    .detalle-nombre {
+
+        font-size: 2.2rem;
+
+    }
+
+    .detalle-precio {
+
+        font-size: 1.8rem;
+
+    }
+
+    .detalle-descripcion {
+
+        font-size: 1.1rem;
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .detalle-info {
+
+        gap: 24px;
+
+    }
+
+    .detalle-nombre {
+
+        font-size: 1.8rem;
+
+    }
+
+    .detalle-precio {
+
+        font-size: 1.5rem;
+
+    }
+
+    .detalle-descripcion {
+
+        font-size: 1rem;
+
+    }
+
+}

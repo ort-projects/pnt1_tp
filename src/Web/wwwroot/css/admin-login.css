@@ -1,0 +1,80 @@
+/* ADMINLOGIN :)*/
+
+.card {
+background-color: #ffffff;
+border: none;
+border-radius: 20px;
+width: 100% !important;
+max-width: 1500px !important;
+padding: 40px 50px !important;
+box-shadow: none !important;
+}
+
+
+/* TITULO */
+
+.card h3 {
+font-family: 'Intel One Mono', monospace;
+font-size: 42px;
+font-weight: 500;
+color: #000000;
+text-align: left;
+margin-bottom: 30px;
+}
+
+
+/* SUBTITULO */
+
+.card .text-muted {
+display: none;
+}
+
+
+/* LABELS */
+
+.form-label {
+font-family: 'Intel One Mono', monospace;
+font-size: 18px;
+color: #000000;
+margin-bottom: 10px;
+}
+
+
+/* INPUTS */
+
+.form-control {
+background-color: #d8d8d8;
+border: none;
+border-radius: 12px;
+height: 52px;
+padding-left: 16px;
+font-size: 16px;
+}
+
+
+.form-control:focus {
+background-color: #d8d8d8;
+border: none;
+box-shadow: none;
+}
+
+
+/* BOTON */
+
+.btn-primary {
+background-color: #d8d8d8;
+color: #000000;
+border: none;
+border-radius: 12px;
+width: 180px !important;
+margin: 40px auto 0;
+display: block;
+font-family: 'Intel One Mono', monospace;
+font-size: 18px;
+}
+
+
+.btn-primary:hover {
+background-color: #cfcfcf;
+color: #000000;
+}
