@@ -9,16 +9,22 @@
 
     var buttonText = isEdit ? "Guardar" : "Crear producto";
 }
+@{
+    Layout = "_LayoutAdmin";
+}
 
 @section Styles {
 
-    <link rel="stylesheet" href="~/css/admin-productos.css" asp-append-version="true" />
+    <link rel="stylesheet"
+          href="~/css/admin-producto-form.css"
+          asp-append-version="true" />
 
 }
 
-<div class="admin-toolbar mb-4">
-    <a href="/admin" class="admin-back-btn"> Atras</a>
-</div>
+<h1 class="admin-form-title mb-4">
+    @(isEdit ? "Editar Producto" : "Crear Producto")
+</h1>
+<div class="admin-form-card">
 <form id="editProductForm" method="post" action="@formAction" enctype="application/x-www-form-urlencoded">
     @Html.AntiForgeryToken()
 
@@ -82,10 +88,18 @@
         <label asp-for="Destacado" class="form-check-label">Producto destacado</label>
     </div>
 
-    <button type="submit" class="btn btn-primary" id="submitButton">
+    <div class="admin-form-actions">
+    <button type="submit"
+            class="btn btn-primary"
+            id="submitButton">
+
         @buttonText
+
     </button>
+    <a href="/admin"class="admin-back-btn">Volver</a>
+   </div>
 </form>
+</div>
 
 <script>
     const form = document.getElementById("editProductForm");
