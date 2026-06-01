@@ -10,6 +10,15 @@
     var buttonText = isEdit ? "Guardar" : "Crear producto";
 }
 
+@section Styles {
+
+    <link rel="stylesheet" href="~/css/admin-productos.css" asp-append-version="true" />
+
+}
+
+<div class="admin-toolbar mb-4">
+    <a href="/admin" class="admin-back-btn"> Atras</a>
+</div>
 <form id="editProductForm" method="post" action="@formAction" enctype="application/x-www-form-urlencoded">
     @Html.AntiForgeryToken()
 
