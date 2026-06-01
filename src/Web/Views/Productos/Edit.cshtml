@@ -1,13 +1,22 @@
 @model EditProductModel
-<form id="editProductForm" method="post" action="/productos/update/@Model.Id"
-      enctype="application/x-www-form-urlencoded">
+@using System.Globalization
+
+@{
+    var isEdit = Model.Id > 0;
+    var formAction = isEdit
+        ? $"/productos/update/{Model.Id}"
+        : "/productos/add";
+
+    var buttonText = isEdit ? "Guardar" : "Crear producto";
+}
+
+<form id="editProductForm" method="post" action="@formAction" enctype="application/x-www-form-urlencoded">
     @Html.AntiForgeryToken()
 
     <div class="mb-3">
         <label for="CategoriaId" class="form-label">Categoría</label>
 
         <select id="CategoriaId" name="CategoriaId" class="form-select">
-        
             <option value="">Seleccione una categoría</option>
 
             @foreach (var categoria in Model.Categorias)
@@ -45,9 +54,8 @@
 
     <div class="mb-3">
         <label for="Precio" class="form-label">Precio</label>
-        <input type="number" id="Precio" name="Precio"
-               value="@Model.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture)" class="form-control"
-               step="0.01" />
+        <input type="number" id="Precio" name="Precio" value="@Model.Precio.ToString(CultureInfo.InvariantCulture)"
+               class="form-control" step="0.01" />
     </div>
 
     <div class="mb-3">
@@ -56,7 +64,6 @@
     </div>
 
     <div class="form-check mb-3">
-
         <input asp-for="Estado" class="form-check-input" />
         <label asp-for="Estado" class="form-check-label">Activo</label>
     </div>
@@ -67,7 +74,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary" id="submitButton">
-        Guardar
+        @buttonText
     </button>
 </form>
 

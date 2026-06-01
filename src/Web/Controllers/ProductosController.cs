@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Services;
+using Web.Domain;
 using Web.Models;
 
 namespace Web.Controllers;
@@ -35,6 +36,19 @@ public class ProductosController(ProductoService productoService, CategoriaServi
     }
 
     [Authorize]
+    [HttpGet("New")]
+    public async Task<IActionResult> Add()
+    {
+        var model = new EditProductModel
+        {
+            Id = 0,
+            Estado = true,
+            Categorias = await categoriaService.GetAllIdsAndNames()
+        };
+        return View("Edit", model);
+    }
+
+    [Authorize]
     [Route("Edit/{id}")]
     public async Task<IActionResult> Edit(int id)
     {
@@ -44,6 +58,18 @@ public class ProductosController(ProductoService productoService, CategoriaServi
         var categorias = await categoriaService.GetAllIdsAndNames();
         model.Categorias = categorias;
         return View(model);
+    }
+
+    [HttpPost("Add")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Add([FromForm] UpdateProductoModel model)
+    {
+        var producto = mapper.Map<Producto>(model);
+        producto.FechaActualizacion = DateTime.UtcNow;
+        producto.FechaCreacion = DateTime.UtcNow;
+        producto = await productoService.AddProducto(producto);
+
+        return RedirectToAction($"Edit", new { id = producto.Id });
     }
 
     [Authorize]

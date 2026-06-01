@@ -62,4 +62,11 @@ public class ProductoService(WebDbContext webDbContext)
     {
         await webDbContext.Productos.Where(p => p.Id == producto.Id).ExecuteDeleteAsync();
     }
+
+    public async Task<Producto> AddProducto(Producto producto)
+    {
+        webDbContext.Add(producto);
+        await webDbContext.SaveChangesAsync();
+        return producto;
+    }
 }
