@@ -64,17 +64,4 @@ public class PedidoService(WebDbContext db)
         await db.SaveChangesAsync();
         return pedido;
     }
-
-    public async Task CancelarPedido(int id)
-    {
-        var pedido = await db.Pedidos
-            .IgnoreQueryFilters()
-            .FirstOrDefaultAsync(p => p.Id == id);
-
-        if (pedido is null) return;
-
-        pedido.Estado = false;
-        pedido.FechaActualizacion = DateTime.Now;
-        await db.SaveChangesAsync();
-    }
 }

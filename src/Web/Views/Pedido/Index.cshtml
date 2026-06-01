@@ -65,16 +65,10 @@
                                 }
                             </td>
 
-                            <td>
-                                @if (pedido.Estado)
-                                {
-                                    <form asp-controller="Pedido" asp-action="Cancelar" method="post">
-                                        <input type="hidden" name="id" value="@pedido.Id" />
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                                            Cancelar
-                                        </button>
-                                    </form>
-                                }
+                            <td class="text-end">
+                                <a href="/Pedido/@pedido.Id/Detalle" class="btn btn-sm btn-outline-primary">
+                                    Ver detalle
+                                </a>
                             </td>
 
                         </tr>

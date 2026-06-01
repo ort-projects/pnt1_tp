@@ -29,5 +29,9 @@ public class Profile : AutoMapper.Profile
             .ForMember(dest => dest.FechaActualizacion, opt => opt.Ignore())
             .ForAllMembers(opt =>
                 opt.Condition((src, dest, srcMember) => srcMember != null));
+
+        CreateMap<Pedido, PedidoViewModel>();
+
+        CreateMap<PedidoProducto, PedidoItemViewModel>();
     }
 }

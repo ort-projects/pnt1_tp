@@ -266,3 +266,10 @@ transition: 0.2s ease;
 .btn-outline-danger:hover {
 transform: translateY(-1px);
 }
+
+table .btn-outline-primary {
+border-radius: 12px;
+font-family: 'Intel One Mono', monospace;
+font-size: 0.8rem;
+padding: 8px 14px;
+}

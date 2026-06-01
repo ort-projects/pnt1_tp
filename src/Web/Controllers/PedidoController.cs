@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Services;
@@ -5,7 +6,8 @@ using Web.Models;
 
 namespace Web.Controllers;
 
-public class PedidoController(PedidoService pedidoService) : Controller
+[Route("Pedido")]
+public class PedidoController(PedidoService pedidoService, IMapper mapper) : Controller
 {
     private const string SessionKey = "CarritoId";
     private const string CountKey = "CarritoCount";
@@ -25,61 +27,28 @@ public class PedidoController(PedidoService pedidoService) : Controller
         return RedirectToAction(nameof(Confirmacion), new { id = pedido.Id });
     }
 
+    [HttpGet("Confirmacion")]
     public async Task<IActionResult> Confirmacion(int id)
     {
         var pedido = await pedidoService.ObtenerPedido(id);
         if (pedido is null) return NotFound();
 
-        var vm = new PedidoViewModel
-        {
-            Id = pedido.Id,
-            NumeroPedido = pedido.NumeroPedido,
-            Total = pedido.Total,
-            Estado = pedido.Estado,
-            FechaCreacion = pedido.FechaCreacion,
-            Items = pedido.PedidoProductos.Select(pp => new PedidoItemViewModel
-            {
-                NombreProducto = pp.NombreProducto,
-                SKU = pp.SKU,
-                Cantidad = pp.Cantidad,
-                PrecioUnitario = pp.PrecioUnitario,
-                Subtotal = pp.Subtotal
-            }).ToList()
-        };
-
-        return View(vm);
+        return View(mapper.Map<PedidoViewModel>(pedido));
     }
 
     [Authorize]
     public async Task<IActionResult> Index()
     {
         var pedidos = await pedidoService.ObtenerTodos();
-
-        var vm = pedidos.Select(p => new PedidoViewModel
-        {
-            Id = p.Id,
-            NumeroPedido = p.NumeroPedido,
-            Total = p.Total,
-            Estado = p.Estado,
-            FechaCreacion = p.FechaCreacion,
-            Items = p.PedidoProductos.Select(pp => new PedidoItemViewModel
-            {
-                NombreProducto = pp.NombreProducto,
-                SKU = pp.SKU,
-                Cantidad = pp.Cantidad,
-                PrecioUnitario = pp.PrecioUnitario,
-                Subtotal = pp.Subtotal
-            }).ToList()
-        }).ToList();
-
-        return View(vm);
+        return View(mapper.Map<List<PedidoViewModel>>(pedidos));
     }
 
     [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> Cancelar(int id)
+    [HttpGet("{id}/Detalle")]
+    public async Task<IActionResult> Detalle(int id)
     {
-        await pedidoService.CancelarPedido(id);
-        return RedirectToAction(nameof(Index));
+        var pedidoItems = await pedidoService.ObtenerPedido(id);
+        if ((pedidoItems?.PedidoProductos.Count ?? 0) == 0) return NotFound();
+        return View(mapper.Map<List<PedidoItemViewModel>>(pedidoItems!.PedidoProductos));
     }
 }
